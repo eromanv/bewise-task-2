@@ -46,6 +46,7 @@
 `
 
 ### Добавление аудиозаписи
+
 **URL:** `/api/add_audio/`
 
 **Метод:** POST
@@ -58,10 +59,10 @@
 |access_token| Строка     | Токен доступа пользователя |
 |audio_file  | Файл       | Аудиозапись в формате WAV  |
 
-
 **Пример запроса:**
 
 `curl -X POST -H "Content-Type: multipart/form-data" -F "user_id=e1c2e690-866e-4f2a-aedc-64c9c84a1475" -F "access_token=2b7039e8-6f8b-4a4c-ba24-843bae39e0e6" -F "audio_file=@audio.wav" <http://localhost:8000/api/add_audio/>`
+
 **Пример ответа:**
 
 `{
@@ -81,9 +82,7 @@
 | id         | Строка     |  Идентификатор аудиозаписи |
 |user        | Строка     | Идентификатор пользователя |
 
-
 **Пример запроса:**
-
 
 `<http://localhost:8000/record?id=3e5c79e0-75e1-4c4d-b79c-3a1ccbb07e56&user=e1c2e690-866e-4f2a-aedc-64c9c84a1475>`
 

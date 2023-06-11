@@ -4,6 +4,7 @@ from django.http import FileResponse
 import ffmpeg
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.urls import reverse
 
 from .models import User, Audio
 
@@ -17,7 +18,7 @@ def create_user(request):
         return Response({'user_id': user.user_id, 'access_token': user.access_token})
     else:
         return Response({'error': 'Name parameter is missing.'}, status=400)
-    
+
 
 @api_view(['POST'])
 def add_audio(request):
@@ -50,8 +51,9 @@ def add_audio(request):
     audio = Audio.objects.create(user=user, audio_id=audio_id)
 
     # Возвращаем URL для скачивания записи
-    download_url = f'http://host:port/record?id={audio.audio_id}&user={user.user_id}'
+    download_url = request.build_absolute_uri(reverse('download_audio') + f'?id={audio_id}&user={user_id}')
     return Response({'download_url': download_url})
+
 
 @api_view(['GET'])
 def download_audio(request):

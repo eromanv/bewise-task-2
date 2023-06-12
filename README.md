@@ -1,31 +1,39 @@
 # Bewise Task 2
 
-Это пример приложения Bewise Music для создания пользователей и добавления аудиозаписей.
+Это приложение Bewise Radio/Music для создания пользователей и добавления аудиозаписей, и дальнейшего их скачивания
 
 ## Технологии
 
-
-
+Django REST Framework, PostgreSQL, Docker
 
 ## Покрытие тестами
-python manage.py test music
- нужно будет заменить 'path/to/test_audio.mp3' на реальный путь к тестовому аудиофайлу на вашей файловой системе.
+
+`docker-compose exec web pytest`
 
 ## Установка и запуск
 
-1. Установите зависимости:
+1. Установите Docker, если его еще нет на вашей системе.
 
-`pip install -r requirements.txt`
+2. Склонируйте репозиторий Radio на свою локальную машину:
 
-2. Примените миграции базы данных:
+  `git clone https://github.com/eromanv/bewise-task-2.git`
 
-`python manage.py migrate`
+3. Перейдите в каталоге infra:
 
-3. Запустите сервер разработки Django:
+    `cd infra`
 
-`python manage.py runserver`
+4. Создайте файл .env
 
-Приложение будет доступно по адресу `http://localhost:8000/`.
+        DB_ENGINE=django.db.backends.postgresql
+        DB_NAME=postgres
+        POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=postgres
+        DB_HOST=db
+        DB_PORT=5432
+
+5. Запустите контейнеры Docker с помощью docker-compose:
+
+`docker-compose up`
 
 ## REST API
 
@@ -98,5 +106,3 @@ python manage.py test music
 **Пример ответа:**
 
 Аудиозапись будет скачана с использованием HTTP.
-
-

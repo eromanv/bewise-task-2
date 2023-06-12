@@ -8,17 +8,19 @@ Django REST Framework, PostgreSQL, Docker
 
 ## Покрытие тестами
 
+Для запуска pytest выполните команду:
+
 `docker-compose exec web pytest`
 
 ## Установка и запуск
 
 1. Установите Docker, если его еще нет на вашей системе.
 
-2. Склонируйте репозиторий Radio на свою локальную машину:
+2. Клонируйте репозиторий Radio на свою локальную машину:
 
   `git clone https://github.com/eromanv/bewise-task-2.git`
 
-3. Перейдите в каталоге infra:
+3. Перейдите в каталог infra:
 
     `cd infra`
 
@@ -33,7 +35,7 @@ Django REST Framework, PostgreSQL, Docker
 
 5. Запустите контейнеры Docker с помощью docker-compose:
 
-`docker-compose up`
+`docker-compose up -d`
 
 ## REST API
 
@@ -106,3 +108,7 @@ Django REST Framework, PostgreSQL, Docker
 **Пример ответа:**
 
 Аудиозапись будет скачана с использованием HTTP.
+
+## Автор
+
+Егоров Роман (@eromanvad)
